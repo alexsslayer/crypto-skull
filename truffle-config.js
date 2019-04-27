@@ -22,8 +22,6 @@ const HDWalletProvider = require("truffle-hdwallet-provider");
 const MNEMONIC = process.env.ETH_MNEMONIC;
 const INFURA_KEY = process.env.INFURA_KEY;
 
-console.log(MNEMONIC, INFURA_KEY);
-
 if (!MNEMONIC || !INFURA_KEY) {
   console.error("Please set a mnemonic and infura key.")
   return
@@ -54,10 +52,16 @@ module.exports = {
     },
 
     rinkeby: {
-      provider: () => new HDWalletProvider(MNEMONIC, "https://rinkeby.infura.io/v3/" + INFURA_KEY),
+      provider: function() {
+        return new HDWalletProvider(
+          MNEMONIC,
+          "https://rinkeby.infura.io/v3/" + INFURA_KEY
+        );
+      },
       network_id: "*",
-      gas: 4000000
-    }
+      gas: 4000000,
+      from: "0x9Af756e7Be065DCa83674eC17F3703579A544Da1"
+    },
 
     // Another network with more advanced options...
     // advanced: {
@@ -96,13 +100,13 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.5.2"        // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.5.2",        // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
       //  evmVersion: "byzantium"
       // }
     }
