@@ -10,7 +10,7 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-contract CryptoScull is ERC721Full, Ownable {
+contract CryptoSkull is ERC721Full, Ownable {
     using Strings for string;
 
     uint16 maxSupply;
@@ -39,9 +39,9 @@ contract CryptoScull is ERC721Full, Ownable {
         baseTokenURI = _baseTokenURI;
     }
 
-    function withdraw() external onlyOwner {
-        owner.transfer(address(this).balance);
-    }
+//    function withdraw() external onlyOwner {
+//        owner.transfer(address(this).balance);
+//    }
 
     function tokenURI(uint256 _tokenId) external view returns (string memory) {
         return Strings.strConcat(
