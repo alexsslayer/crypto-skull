@@ -1,7 +1,7 @@
 pragma solidity ^0.5.2;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
-import "./Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./Strings.sol";
 
 contract OwnableDelegateProxy { }
@@ -10,28 +10,33 @@ contract ProxyRegistry {
     mapping(address => OwnableDelegateProxy) public proxies;
 }
 
-contract CryptoSkull is ERC721Full, Ownable {
+contract CryptoSkulls is ERC721Full, Ownable {
     using Strings for string;
 
-    uint16 maxSupply;
+    string imageHash = "";
+
     address proxyRegistryAddress;
     string baseTokenURI = "";
 
     constructor (string memory name,
                  string memory symbol,
-                 uint16 _maxSupply,
                  address _proxyRegistryAddress)
         ERC721Full(name, symbol) public {
 
-        maxSupply = _maxSupply;
         proxyRegistryAddress = _proxyRegistryAddress;
     }
 
-    function mint() external onlyOwner {
-        require(totalSupply() == 0);
+    function mint(uint256[] calldata tokenIds) external onlyOwner {
+        address owner = owner();
 
-        for (uint16 i = 0; i < maxSupply; i++) {
-            _mint(owner, i);
+        uint256 length = tokenIds.length;
+
+        for (uint256 i = 0; i < length; i++) {
+            uint256 tokenId = tokenIds[i];
+
+            require(tokenId >= 0 && tokenId <= 9999);
+
+            _mint(owner, tokenId);
         }
     }
 
@@ -39,9 +44,9 @@ contract CryptoSkull is ERC721Full, Ownable {
         baseTokenURI = _baseTokenURI;
     }
 
-//    function withdraw() external onlyOwner {
-//        owner.transfer(address(this).balance);
-//    }
+    function setProxyRegistryAddress(address _proxyRegistryAddress) external onlyOwner {
+        proxyRegistryAddress = _proxyRegistryAddress;
+    }
 
     function tokenURI(uint256 _tokenId) external view returns (string memory) {
         return Strings.strConcat(

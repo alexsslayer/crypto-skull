@@ -1,13 +1,15 @@
-var contract = artifacts.require("CryptoSkull");
+var contractAddress = require('./contract.js');
+var contract = artifacts.require('CryptoSkulls');
 
-var contract_address = '0x893E47c0eAfA589af2a20cE613BF49b02d479e44';
+var tokenIds = ["111", "222", "333", "444", "555"];
 
 module.exports = function() {
+  async function mint(tokenIds) {
+    let ins = await contract.at(contractAddress);
+    let response = await ins.mint(tokenIds);
 
-  async function mint() {
-    let ins = await contract.at(contract_address);
-    await ins.mint();
+    console.log('Completed', response);
   }
 
-  mint();
+  mint(tokenIds);
 }
