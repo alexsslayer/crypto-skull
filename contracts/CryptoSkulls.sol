@@ -13,7 +13,7 @@ contract ProxyRegistry {
 contract CryptoSkulls is ERC721Full, Ownable {
     using Strings for string;
 
-    string imageHash = "";
+    string public imageHash = "ee45d31baca263402d1ed0a6f3262ced177420365fe10f3dcf069b32b105fef7";
 
     address proxyRegistryAddress;
     string baseTokenURI = "";
