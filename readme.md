@@ -2,16 +2,22 @@
 
 ## CryptoSkulls - collectible ERC-721 Tokens
 
+### About
+
 CryptoSkulls are 10,000 collectible ERC-721 Non-Fungible Tokens stored on Ethereum blockchain. 
 Each CryptoSkull character is unique pixel art image.
 
 Official site: [https://www.cryptoskulls.com](https://www.cryptoskulls.com)
+
 OpenSea marketplace: [CryptoSkulls](https://opensea.io/category/cryptoskulls)
 
 Twitter: [@Crypto_Skulls](https://twitter.com/Crypto_Skulls)
 
 Contract (Etherscan): [0xc1Caf0C19A8AC28c41Fe59bA6c754e4b9bd54dE9](https://etherscan.io/address/0xc1Caf0C19A8AC28c41Fe59bA6c754e4b9bd54dE9)
+
 Token (Etherscan): [CryptoSkulls](https://etherscan.io/token/0xc1Caf0C19A8AC28c41Fe59bA6c754e4b9bd54dE9)
+
+### All CryptoSkulls in one image
 
 ![All CryptoSkulls in one image](/cryptoskulls.png)
 
