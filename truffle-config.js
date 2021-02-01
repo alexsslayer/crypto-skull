@@ -18,15 +18,18 @@
  *
  */
 
-const HDWalletProvider = require("truffle-hdwallet-provider");
+require('dotenv').config();
+
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+
 const MNEMONIC = process.env.ETH_MNEMONIC;
 const INFURA_KEY = process.env.INFURA_KEY;
 
 const ADDRESS = "0x9Af756e7Be065DCa83674eC17F3703579A544Da1";
 
 if (!MNEMONIC || !INFURA_KEY) {
-  console.error("Please set a mnemonic and infura key.")
-  return
+  console.error("Please set a mnemonic and Infura key.");
+  return;
 }
 
 module.exports = {
@@ -63,6 +66,20 @@ module.exports = {
       network_id: "*",
       gas: 4000000,
       from: ADDRESS
+    },
+
+    goerli: {
+      provider: new HDWalletProvider(
+            MNEMONIC,
+            "https://goerli.infura.io/v3/" + INFURA_KEY
+        ),
+      network_id: "*",
+      gas: 8000000,
+      gasPrice: 2000000000,  // 2 gwei
+      from: ADDRESS,
+      networkCheckTimeout: 10000000,
+      confirmations: 2,
+      timeoutBlocks: 200,
     },
 
     live: {

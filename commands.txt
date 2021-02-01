@@ -1,0 +1,21 @@
+truffle migrate --network goerli --reset --compile-all
+
+truffle exec scripts/set-base-token-uri-goerli.js --network goerli
+
+truffle exec scripts/mint-goerli.js --network goerli
+
+============================================================
+
+truffle migrate --network rinkeby --reset --compile-all
+
+truffle exec scripts/set-base-token-uri.js --network rinkeby
+
+============================================================
+
+truffle migrate --network live --reset --compile-all
+
+truffle exec scripts/set-base-token-uri.js --network live
+
+truffle exec scripts/mint.js --network live
+
+solidity_flattener --solc-path="solc --allow-paths $PWD/node_modules/openzeppelin-solidity/ openzeppelin-solidity=$PWD/node_modules/openzeppelin-solidity" contracts/CryptoSkulls.sol --output $PWD/flattened/CryptoSkulls.sol
