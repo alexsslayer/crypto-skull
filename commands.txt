@@ -4,6 +4,8 @@ truffle exec scripts/set-base-token-uri-goerli.js --network goerli
 
 truffle exec scripts/mint-goerli.js --network goerli
 
+truffle run verify CryptoSkulls --network goerli
+
 ============================================================
 
 truffle migrate --network rinkeby --reset --compile-all

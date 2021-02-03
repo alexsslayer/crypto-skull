@@ -73,7 +73,7 @@ module.exports = {
             MNEMONIC,
             "https://goerli.infura.io/v3/" + INFURA_KEY
         ),
-      network_id: "*",
+      network_id: 5,
       gas: 8000000,
       gasPrice: 2000000000,  // 2 gwei
       from: ADDRESS,
@@ -142,5 +142,13 @@ module.exports = {
       //  evmVersion: "byzantium"
       // }
     }
+  },
+
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+
+  api_keys: {
+    etherscan: process.env.ETHERSCAN_API_KEY
   }
 }
