@@ -1,3 +1,13 @@
+truffle migrate --network mumbai --reset --compile-all
+
+truffle exec scripts/set-base-uri-mumbai.js --network mumbai
+
+truffle exec scripts/token-uri-mumbai.js --network mumbai
+
+truffle exec scripts/base-uri-mumbai.js --network mumbai
+
+===========================================================
+
 truffle migrate --network goerli --reset --compile-all
 
 truffle exec scripts/set-base-token-uri-goerli.js --network goerli
