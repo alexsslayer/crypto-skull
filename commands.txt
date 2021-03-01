@@ -1,3 +1,7 @@
+truffle migrate --network matic --reset --compile-all
+
+============================================================
+
 truffle migrate --network mumbai --reset --compile-all
 
 truffle exec scripts/set-base-uri-mumbai.js --network mumbai

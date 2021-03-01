@@ -5,7 +5,7 @@ module.exports = function() {
 
     async function tokenURI() {
         let ins = await contract.at(contractAddress);
-        let response = await ins.tokenURI(0);
+        let response = await ins.tokenURI(9);
 
         console.log('Completed: ', response);
     }
